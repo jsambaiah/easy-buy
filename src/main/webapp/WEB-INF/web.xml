@@ -4,7 +4,7 @@
 
 <web-app>
 
-    <display-name>Archetype Created Web Application</display-name>
+    <display-name>Easy Buy</display-name>
 
     <welcome-file-list>
         <welcome-file>/resources/calories-tracker.html</welcome-file>
