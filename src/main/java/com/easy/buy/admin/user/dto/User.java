@@ -24,6 +24,7 @@ public class User {
 	private Calendar lastAccessTime;
 	private String captcha;
 	private byte failedAttempts;
+	private Integer role;
 
 	public User() {
 	}
@@ -163,10 +164,25 @@ public class User {
 		this.failedAttempts = failedAttempts;
 	}
 
+	/**
+	 * @return the role
+	 */
+	public Integer getRole() {
+		return role;
+	}
+
+	/**
+	 * @param role
+	 *            the role to set
+	 */
+	public void setRole(Integer role) {
+		this.role = role;
+	}
+
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", status=" + status
 				+ ", lastAccessTime=" + lastAccessTime + ", captcha=" + captcha
-				+ ", failedAttempts=" + failedAttempts + "]";
+				+ ", failedAttempts=" + failedAttempts + ", role=" + role + "]";
 	}
 
 }

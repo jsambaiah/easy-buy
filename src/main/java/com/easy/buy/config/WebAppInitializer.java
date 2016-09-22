@@ -1,8 +1,9 @@
-package com.easy.config;
+package com.easy.buy.config;
 
 
-import com.easy.config.root.AppSecurityConfig;
-import com.easy.config.servlet.ServletContextConfig;
+import com.easy.buy.config.root.AppSecurityConfig;
+import com.easy.buy.config.servlet.ServletContextConfig;
+
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**

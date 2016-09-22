@@ -1,4 +1,4 @@
-package com.easy.config.security;
+package com.easy.buy.config.security;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;

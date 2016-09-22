@@ -1,8 +1,6 @@
-package com.easy.config.root;
+package com.easy.buy.config.root;
 
 
-import com.easy.config.security.AjaxAuthenticationSuccessHandler;
-import com.allanditzel.springframework.security.web.csrf.CsrfTokenResponseHeaderBindingFilter;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +13,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.csrf.CsrfFilter;
 
-import javax.sql.DataSource;
+import com.allanditzel.springframework.security.web.csrf.CsrfTokenResponseHeaderBindingFilter;
+import com.easy.buy.config.security.AjaxAuthenticationSuccessHandler;
+import com.easy.buy.config.security.SecurityUserDetailsService;
 
 /**
  *
@@ -31,18 +31,15 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final Logger LOGGER = Logger.getLogger(AppSecurityConfig.class);
 
-/*    @Autowired
-    private SecurityUserDetailsService userDetailsService;
-
     @Autowired
-    DataSource dataSource;
+    private SecurityUserDetailsService userDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
 
-*/    @Override
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         CsrfTokenResponseHeaderBindingFilter csrfTokenFilter = new CsrfTokenResponseHeaderBindingFilter();
@@ -51,13 +48,13 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
             .antMatchers("/resources/public/**").permitAll()
-            .antMatchers("/resources/img/**").permitAll()
-            .antMatchers("/resources/bower_components/**").permitAll()
+            //.antMatchers("/resources/img/**").permitAll()
+            //.antMatchers("/resources/bower_components/**").permitAll()
             .antMatchers(HttpMethod.POST, "/user").permitAll()
             .anyRequest().authenticated()
             .and()
             .formLogin()
-            .defaultSuccessUrl("/resources/calories-tracker.html")
+            .defaultSuccessUrl("/resources/public/ebuy_welcome.html")
             .loginProcessingUrl("/authenticate")
             .usernameParameter("username")
             .passwordParameter("password")

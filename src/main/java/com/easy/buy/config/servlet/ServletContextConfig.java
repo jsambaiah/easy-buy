@@ -1,4 +1,4 @@
-package com.easy.config.servlet;
+package com.easy.buy.config.servlet;
 
 
 import org.springframework.context.annotation.ComponentScan;

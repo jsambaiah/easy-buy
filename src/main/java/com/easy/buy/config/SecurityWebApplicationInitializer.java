@@ -1,4 +1,4 @@
-package com.easy.config;
+package com.easy.buy.config;
 
 import org.springframework.core.annotation.Order;
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
