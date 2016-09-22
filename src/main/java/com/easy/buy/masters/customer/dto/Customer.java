@@ -3,12 +3,15 @@
  */
 package com.easy.buy.masters.customer.dto;
 
+import java.sql.Timestamp;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.easy.buy.masters.customer.address.dto.Address;
+import com.easy.buy.masters.general.dto.Country;
+
+
 
 /**
  * @author Sambaiah
@@ -16,15 +19,113 @@ import com.easy.buy.masters.customer.address.dto.Address;
  */
 @Document
 public class Customer {
+	public Timestamp getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Timestamp dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getMarried() {
+		return married;
+	}
+
+	public void setMarried(String married) {
+		this.married = married;
+	}
+
+	public String getAnniversaryDate() {
+		return anniversaryDate;
+	}
+
+	public void setAnniversaryDate(String anniversaryDate) {
+		this.anniversaryDate = anniversaryDate;
+	}
+
+	public Timestamp getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Timestamp createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Timestamp getModifiedDate() {
+		return modifiedDate;
+	}
+
+	public void setModifiedDate(Timestamp modifiedDate) {
+		this.modifiedDate = modifiedDate;
+	}
+
+	public String getModifiedBy() {
+		return modifiedBy;
+	}
+
+	public void setModifiedBy(String modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
+
+	public char getActive() {
+		return active;
+	}
+
+	public void setActive(char active) {
+		this.active = active;
+	}	
+
 	@Id
-	private String id;
 	@Indexed
+	private String id;	
 	private String userId;
 	private String firstName;
 	private String lastName;
-	private String gender;
-	@DBRef
-	private Address address;
+	private char gender;
+	private Timestamp dateOfBirth;
+	private int age;
+	private String married;
+	private String anniversaryDate;
+	private Timestamp createdDate;
+	private String createdBy;
+	private Timestamp modifiedDate;
+	private String modifiedBy;
+	private CustomerComminication custCommnication;
+	private Country country;
+	private char active;
+	
+
+	public CustomerComminication getCustCommnication() {
+		return custCommnication;
+	}
+
+	public void setCustCommnication(CustomerComminication custCommnication) {
+		this.custCommnication = custCommnication;
+	}
+
+	public Country getCountry() {
+		return country;
+	}
+
+	public void setCountry(Country country) {
+		this.country = country;
+	}
 
 	public Customer() {
 	}
@@ -34,17 +135,37 @@ public class Customer {
 	 * @param firstName
 	 * @param lastName
 	 * @param gender
-	 * @param address
+	 * @param dateOfBirth
+	 * @param age
+	 * @param married
+	 * @param anniversaryDate;
+	 * @param createdDate;
+	 * @param createdBy;
+	 * @param modifiedDate;
+	 * @param modifiedBy;
+	 * @param active;
 	 */
 	public Customer(String id, String userId, String firstName,
-			String lastName, String gender, Address address) {
+			String lastName, char gender,Timestamp dateOfBirth,
+			int age,String married,String anniversaryDate,
+			Timestamp createdDate,String createdBy,
+			Timestamp modifiedDate,String modifiedBy,
+			char active) {
 		super();
 		this.id = id;
 		this.userId = userId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.gender = gender;
-		this.address = address;
+		this.dateOfBirth = dateOfBirth;
+		this.age = age;
+		this.married = married;
+		this.anniversaryDate = anniversaryDate;
+		this.createdDate = createdDate;
+		this.createdBy = createdBy;
+		this.modifiedDate = modifiedDate;
+		this.modifiedBy = modifiedBy;
+		this.active = active;		
 	}
 
 	/**
@@ -110,7 +231,7 @@ public class Customer {
 	/**
 	 * @return the gender
 	 */
-	public String getGender() {
+	public char getGender() {
 		return gender;
 	}
 
@@ -118,29 +239,21 @@ public class Customer {
 	 * @param gender
 	 *            the gender to set
 	 */
-	public void setGender(String gender) {
+	public void setGender(char gender) {
 		this.gender = gender;
 	}
 
-	/**
-	 * @return the address
-	 */
-	public Address getAddress() {
-		return address;
-	}
+	
 
-	/**
-	 * @param address
-	 *            the address to set
-	 */
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
+	@Override
 	public String toString() {
-		return "User [id=" + id + ", userId=" + userId + ", firstName="
+		return "Customer [id=" + id + ", userId=" + userId + ", firstName="
 				+ firstName + ", lastName=" + lastName + ", gender=" + gender
-				+ ", adress=" + address + "]";
+				+ ", dateOfBirth=" + dateOfBirth + ", age=" + age
+				+ ", married=" + married + ", anniversaryDate="
+				+ anniversaryDate + ", createdDate=" + createdDate
+				+ ", createdBy=" + createdBy + ", modifiedDate=" + modifiedDate
+				+ ", modifiedBy=" + modifiedBy + ", active=" + active + "]";
 	}
 
 }
