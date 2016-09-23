@@ -5,12 +5,14 @@ package com.easy.buy.welcom;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.yaml.snakeyaml.nodes.Tag;
+
+import com.easy.buy.masters.product.item.dto.Item;
+import com.easy.buy.masters.product.item.services.ItemService;
 
 /**
  * @author Sambaiah
@@ -18,11 +20,11 @@ import org.yaml.snakeyaml.nodes.Tag;
  */
 @Controller
 public class WelcomeController {
-	@RequestMapping(value = "/getTags", method = RequestMethod.GET)
-	public @ResponseBody
-	List<Tag> getTags(@RequestParam String tagName) {
+	@Autowired
+	private ItemService itemService;
 
-		return simulateSearchResult(tagName);
-
+	@RequestMapping(value = "/getWelcomeItems", method = RequestMethod.GET)
+	public @ResponseBody List<Item> getWelcomeItems() {
+		return itemService.findAll();
 	}
 }

@@ -14,8 +14,16 @@
 		<org.slf4j-version>1.6.1</org.slf4j-version>
 		<mongodb.driver.version>2.12.5</mongodb.driver.version>
 		<spring-security-version>4.0.2.RELEASE</spring-security-version>
+		<jstl.version>1.2</jstl.version>
+		<jackson.version>1.9.10</jackson.version>
 	</properties>
 	<dependencies>
+		<!-- jstl -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
@@ -140,6 +148,12 @@
 			<version>${mongodb.driver.version}</version>
 		</dependency>
 		<!-- Need to check use of these jars -->
+		<!-- Jackson -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jul-to-slf4j</artifactId>

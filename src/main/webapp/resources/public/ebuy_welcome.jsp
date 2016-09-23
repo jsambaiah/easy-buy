@@ -1,36 +1,53 @@
-<!DOCTYPE HTML>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-	<title>Fresh Bag</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="" />
-	<link href="resources/public/css/bootstrap.css" rel='stylesheet'
-		type='text/css' />
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<!-- Custom Theme files -->
-	<link href="resources/public/css/style.css" rel='stylesheet'
-		type='text/css' />
-	<!-- Custom Theme files -->
-	<!--webfont-->
-	<link
-		href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext'
-		rel='stylesheet' type='text/css'>
-	<script type="text/javascript"
-		src="resources/public/js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript"
-		src="resources/public/js/jquery.autocomplete.js"></script>
-	<script type="text/javascript"
-		src="resources/public/js/jquery.autocomplete.min.js"></script>
-	<script type="text/javascript" src="resources/public/js/bootstrap.js"></script>
-	<!-- start menu -->
-	<link href="resources/public/css/megamenu.css" rel="stylesheet"
-		type="text/css" media="all" />
-	<script>
-		$('#myModal').on('shown.bs.modal', function() {
-			$('#myInput').focus()
-		})
-	</script>
+<title>Fresh Bag</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<link href="resources/public/css/bootstrap.css" rel='stylesheet'
+	type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- Custom Theme files -->
+<link href="resources/public/css/style.css" rel='stylesheet'
+	type='text/css' />
+<!-- Custom Theme files -->
+<!--webfont-->
+<link
+	href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext'
+	rel='stylesheet' type='text/css'>
+<script type="text/javascript"
+	src="resources/public/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="resources/public/js/bootstrap.js"></script>
+<!-- start menu -->
+<link href="resources/public/css/megamenu.css" rel="stylesheet"
+	type="text/css" media="all" />
+<script>
+	$('#myModal').on('shown.bs.modal', function() {
+		$('#myInput').focus()
+	});
+	$(document).ready(function() {
+		$('#login').autocomplete({
+			serviceUrl : '${pageContext.request.contextPath}/getWelcomeItems',
+			paramName : "name",
+			delimiter : ",",
+			transformResult : function(response) {
+
+				return {
+					//must convert json to javascript object before process
+					suggestions : $.map($.parseJSON(response), function(item) {
+
+						return {
+							alert("Samba "+item.name);
+							value : item.name,
+							data : item.id
+						};
+					})
+				};
+			}
+		});
+	});
+</script>
 </head>
 <body>
 	<div class="modal fade bs-example" id="register" role="dialog"
@@ -46,7 +63,7 @@
 				</div>
 				<div class="modal-body">
 					<div class="row text13">
-						<form role="form">
+						<form role="registerForm" >
 							<div class="col-lg-10">
 
 								<div class="form-group">
@@ -124,7 +141,7 @@
 						Sign In
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
-							<span aria-hidden="true">Ã—</span>
+							<span aria-hidden="true">×</span>
 						</button>
 					</div>
 
@@ -784,7 +801,7 @@
 				<p>+ 917507649011</p>
 			</div>
 		</div>
-		<div class="copyright">Copyright Â© 2015 Fresh Mart. All Rights
+		<div class="copyright">Copyright © 2015 Fresh Mart. All Rights
 			Reserved</div>
 	</footer>
 
